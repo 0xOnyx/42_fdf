@@ -8,6 +8,7 @@ https://www.youtube.com/watch?v=go1qrWFw_bs
 https://en.wikipedia.org/wiki/Isometric_projection#:~:text=Isometric%20projection%20is%20a%20method,of%20them%20is%20120%20degrees.
 
 https://github.com/VBrazhnik/FdF/wiki
+https://git.42l.fr/Fabien/fdf
 https://stackoverflow.com/questions/28607713/convert-3d-coordinates-to-2d-in-an-isometric-projection
 
 https://pikuma.com/images/blog/isometric-projection-in-games/linear-transformation.gif
@@ -18,3 +19,11 @@ Isometric projection
 
 u = x*cos(α) + y*cos(α+120°) + z*cos(α-120°)
 v = x*sin(α) + y*sin(α+120°) + z*sin(α-120°)
+
+    *x = (previous_x - previous_y) * cos(0.523599);
+    *y = -z + (previous_x + previous_y) * sin(0.523599);
+    
+    destination.x = source.x + cos(angle) * source.z - cos(angle) * source.y
+destination.y = -source.y * sin(angle) - source.z * sin(angle)
+
+https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cercle_trigo_3.svg/660px-Cercle_trigo_3.svg.png
