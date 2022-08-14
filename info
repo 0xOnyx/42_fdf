@@ -15,3 +15,6 @@ https://pikuma.com/images/blog/isometric-projection-in-games/linear-transformati
 Isometric projection
 
 3d cordonate to 2d isometfric
+
+u = x*cos(α) + y*cos(α+120°) + z*cos(α-120°)
+v = x*sin(α) + y*sin(α+120°) + z*sin(α-120°)
