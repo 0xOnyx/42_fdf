@@ -10,4 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "fdf.h"
 
+int	ft_render_next_frame(void *data)
+{
+	t_vars	*vars;
+
+	vars = (t_vars *)data;
+	if(vars)
+		return (1);
+	return (1);
+}

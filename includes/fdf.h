@@ -15,9 +15,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <mlx.h>
 # include "libft.h"
 
+# define NAME "FDF"
 # define ANGLE 30
 # define WIDTH 30
 # define HEIGHT 30
@@ -55,8 +57,8 @@ typedef struct s_vars
 int		ft_valid_arg(int argc, char **argv);
 int		ft_safe_file(char *file);
 int		ft_parse_file(char *file, t_vars *vars);
-int		ft_init_map(char *file, t_map *vars);
-int		ft_init_mlx(t_map *vars);
+int		ft_init_map(char *file, t_vars *vars);
+int		ft_init_mlx(t_vars *vars);
 void	ft_safe_exit(t_vars vars);
 int		ft_render_next_frame(void *vars);
 int		ft_key_press(int keycode, void *vars);

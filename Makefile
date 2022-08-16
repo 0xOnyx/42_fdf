@@ -12,9 +12,10 @@
 
 NAME = fdf
 LIBFT = libft
+MLX = mlx
 OPTIONS = -I/usr/include/ -Imlx_linux -I./includes -I./libft -o3 -c 
 CFLAGS = -Wall -Wextra -Werror
-LIB = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft
+LIB = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
 CC = gcc
 SRC_PATH = ./src/
 SRC =	ft_draw_map.c \
@@ -36,20 +37,26 @@ all:$(NAME)
 $(LIBFT):
 	make -C ./libft
 
+$(MLX):
+	make -C ./mlx_linux
+
 .c.o:
 	$(CC) $(CFLAGS) $(OPTIONS) $(<) -o $(<:.c=.o)
 
-$(NAME): $(LIBFT) $(OBJS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
 clean:
 	/bin/rm -f $(OBJS)
 	make -C ./libft clean
+	make -C ./mlx_linux clean
 
 fclean: clean
-	/bin/rm -f $(OBJS)
-	make -C ./libft fclean
+	/bin/rm -f $(NAME)
+	/bin/rm -f ./mlx_linux/libmlx_linux.a
+	/bin/rm -f ./mlx_linux/libmlx.a
+	make -C ./mlx_linux fclean
 
 re:	fclean all
 
-.PHONY: re fclean clean all
+.PHONY: re fclean clean all $(LIBFT) $(MLX)

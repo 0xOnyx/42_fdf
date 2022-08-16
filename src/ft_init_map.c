@@ -20,15 +20,17 @@ static void	ft_parse(char **current_parse, t_vars *vars, int current_pos)
 	i = 0;
 	while (i < vars->width)
 	{
-		if (ft_strlen(current_parse[i]) >= 2 && current_parse[i][1] == 'x')
+/*		if (ft_strlen(current_parse[i]) >= 2 && current_parse[i][1] == 'x')
 			vars->map_buff[current_pos][i] = ft_atoi_hex(current_parse[i]);
-		else
+
+		else */
 			vars->map_buff[current_pos][i] = ft_atoi(current_parse[i]);
+
 		i++;
 	}
 }
 
-int	ft_init_map(char *file, t_map *vars)
+int	ft_init_map(char *file, t_vars *vars)
 {
 	int	fd;
 	int	current_pos;
@@ -44,12 +46,12 @@ int	ft_init_map(char *file, t_map *vars)
 		current_parse = ft_split((char const *)current_line, (char)32);
 		ft_parse(current_parse, vars, current_pos);
 		free(current_parse);
-		free(currrent_line);
+		free(current_line);
 		current_line = get_next_line(fd);
 		current_pos++;
 	}
 	close(fd);
-	if (!vars->height || !vars->widht)
+	if (!vars->height || !vars->width)
 		return (0);
 	return (1);
 }

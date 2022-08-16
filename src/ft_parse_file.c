@@ -37,14 +37,14 @@ int	ft_parse_file(char *file, t_vars *vars)
 	{
 		current_parse = ft_split((char const *)current_line, (char)32);
 		if (!vars->width)
-			vars->width = ft_len_array(current_parse)
+			vars->width = ft_len_array(current_parse);
 		free(current_parse);
-		free(currrent_line);
+		free(current_line);
 		current_line = get_next_line(fd);
 		vars->height++;
 	}
 	close(fd);
-	if (!vars->height || !vars->widht)
+	if (!vars->height || !vars->width)
 		return (0);
 	return (1);
 }

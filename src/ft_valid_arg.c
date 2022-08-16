@@ -14,10 +14,10 @@
 
 int	ft_valid_arg(int argc, char **argv)
 {
-	if (argc != 2 || ft_strlen(argv) <= 0)
+	if (argc != 2 || ft_strlen(argv[1]) <= 0)
 	{
 		ft_putstr_fd("[ERROR]: usage ./fdf <map.fdf>\n", 2);
-		return (0)
+		return (0);
 	}
 	return (1);
 }

@@ -14,7 +14,8 @@
 
 int	ft_safe_file(char *file)
 {
-	int	fd;
+	int		fd;
+	char	c;
 
 	fd = 0;
 	fd = open(file, O_RDONLY);

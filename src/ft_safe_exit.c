@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static ft_free_map(char **buff, t_vars vars)
+static void	ft_free_map(int **buff, t_vars vars)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ static ft_free_map(char **buff, t_vars vars)
 void	ft_safe_exit(t_vars vars)
 {
 	if (vars.mlx)
-		mlx_destroy_window(vars->mlx, vars->win);
+		mlx_destroy_window(vars.mlx, vars.mlx_win);
 	if (vars.map_buff)
 		ft_free_map(vars.map_buff, vars);
 	if (vars.data.img)

@@ -12,11 +12,13 @@
 
 #include "fdf.h"
 
-int		ft_key_press(int keycode, void *vars)
+int		ft_key_press(int keycode, void *data)
 {
 	t_vars	*vars;
 	
 	vars = (t_vars *)data;
+	if (keycode == 53)
+		ft_safe_exit(*vars);
 
 	return (1);
 }

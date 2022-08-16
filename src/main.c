@@ -19,13 +19,13 @@ void	ft_init_vars(t_vars *vars)
 	vars->map_buff = NULL;
 	vars->width = 0;
 	vars->height = 0;
-	vars->data.data = NULL;
+	vars->data.img = NULL;
 	vars->data.addr = NULL;
 	vars->data.bits_per_pixel = 0;
 	vars->data.line_length = 0;
 	vars->data.endian = 0;
 	vars->options.angle = ANGLE;
-	vars->options.widht = WIDTH;
+	vars->options.width = WIDTH;
 	vars->options.screen_width = SCREEN_WIDTH;
 	vars->options.screen_height = SCREEN_HEIGHT;
 }
@@ -37,13 +37,16 @@ int	main(int argc, char **argv)
 	ft_init_vars(&vars);
 	if (!ft_valid_arg(argc, argv) 
 	|| !ft_safe_file(argv[1])
-	|| !ft_parse_file(argv[1], &vars)
-	|| !ft_init_map(argv[1], &vars)
-	|| !ft_init_mlx(&vars))
+//	|| !ft_parse_file(argv[1], &vars)
+//	|| !ft_init_map(argv[1], &vars)
+//	|| !ft_init_mlx(&vars)
+	)
+	{
 		ft_safe_exit(vars);
 		return (1);
-	mlx_hook(vars->mlx_win, 2, 1L<<0, ft_key_press, (void *)vars);
-	mlx_loop_hook(vars->mlx, ft_render_next_frame, (void *)&vars);
-	mlx_loop(vars->mlx);
+	}
+//	mlx_hook(vars.mlx_win, 2, 1L<<0, ft_key_press, (void *)&vars);
+//	mlx_loop_hook(vars.mlx, ft_render_next_frame, (void *)&vars);
+//	mlx_loop(vars.mlx);
 	return (0);
 }

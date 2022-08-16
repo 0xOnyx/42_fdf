@@ -12,18 +12,22 @@
 
 #include "fdf.h"
 
-int	ft_init_mlx(t_map *vars)
+int	ft_init_mlx(t_vars *vars)
 {
 	vars->mlx = mlx_init();
-	vars->mlx_win = mlx_new_window(vars->mlx,
+	vars->mlx_win = mlx_new_window(
+		vars->mlx,
+		vars->options.screen_width,
+		vars->options.screen_height,
+		NAME);
+	vars->data.img = mlx_new_image(
+		vars->mlx,
 		vars->options.screen_width,
 		vars->options.screen_height);
-	vars->mlx.data.img = mlx_new_image(vars->mlx
-		vars->options.screen_width,
-		vars->options.screen_height);
-	vars->mlx.data.addr = mlx_get_data_addr(vars->mlx.data.img,
-		&vars->mlx.data.bits_per_pixel,
-		&vars->mlx.data.line_length,
-		&vars->mlx.data.endian);
+	vars->data.addr = mlx_get_data_addr(
+		vars->data.img,
+		&vars->data.bits_per_pixel,
+		&vars->data.line_length,
+		&vars->data.endian);
 	return (1);
 }

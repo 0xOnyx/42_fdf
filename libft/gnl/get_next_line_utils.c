@@ -64,7 +64,7 @@ char	*ft_strchr(const char *s, int c)
 	return (current);
 }
 
-char	*ft_substr(char const *s, size_t len)
+char	*ft_substr_gnl(char const *s, size_t len)
 {
 	char	*res;
 	size_t	i;
@@ -94,6 +94,6 @@ char	*ft_get_line(char *buff)
 	if (!end)
 		return (end);
 	len = end - buff + 1;
-	res = ft_substr((char const *)buff, len);
+	res = ft_substr_gnl((char const *)buff, len);
 	return (res);
 }

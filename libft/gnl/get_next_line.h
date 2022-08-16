@@ -26,7 +26,7 @@ char	*ft_init_new_buff(char *current_buff);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_substr(char const *s, size_t len);
+char	*ft_substr_gnl(char const *s, size_t len);
 size_t	ft_strlen(char const *str);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
