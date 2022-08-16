@@ -25,6 +25,5 @@ int	ft_init_mlx(t_map *vars)
 		&vars->mlx.data.bits_per_pixel,
 		&vars->mlx.data.line_length,
 		&vars->mlx.data.endian);
-	mlx_hook(vars->mlx_win, 2, 1L<<0, ft_key_press, (void *)vars));
 	return (1);
 }

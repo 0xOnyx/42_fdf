@@ -12,7 +12,7 @@
 
 NAME = fdf
 LIBFT = libft
-OPTIONS = -I/usr/include/ -Imlx_linux -I./includes -I./libft -03 -c 
+OPTIONS = -I/usr/include/ -Imlx_linux -I./includes -I./libft -o3 -c 
 CFLAGS = -Wall -Wextra -Werror
 LIB = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -Llibft -lft
 CC = gcc
@@ -28,9 +28,10 @@ SRC =	ft_draw_map.c \
 		ft_valid_arg.c \
 		main.c
 
-OBJS = $(addprefix $(SRC_PATH),$(SRC))
+SRCS = $(addprefix $(SRC_PATH),$(SRC))
+OBJS = $(SRCS:.c=.o)
 
-all: $(LIBFT) $(NAME)
+all:$(NAME)
 
 $(LIBFT):
 	make -C ./libft
