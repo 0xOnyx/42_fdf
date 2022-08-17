@@ -1,33 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_mlx.c                                     :+:      :+:    :+:   */
+/*   ft_math_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jerdos-s <jerdos-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/16 21:25:50 by jerdos-s          #+#    #+#             */
-/*   Updated: 2022/08/16 21:25:51 by jerdos-s         ###   ########.fr       */
+/*   Created: 2022/08/17 11:46:08 by jerdos-s          #+#    #+#             */
+/*   Updated: 2022/08/17 11:46:09 by jerdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_mlx_put_pixel(t_data *data, int x, int y, int color)
+double	ft_deg_to_rad(int deg)
 {
-	char	*dest;
-
-	dest = data->addr;
-	if (!dest)
-		return ;
-	
-	int test;
-
-	test = y * data->line_length + x * (data->bits_per_pixel / 8);
-	dest += test;
-	*(unsigned int *)dest = color;
+	return (deg * (M_PI / 180));
 }
 
-int	ft_create_trgb(int t, int r, int g, int b)
+double	ft_cos(int deg)
 {
-	return (t << 24 | r << 16 | g << 8 | b);
+	double	rad;
+
+	rad = ft_deg_to_rad(deg);
+	return (cos(rad));
+}
+
+double	ft_sin(int deg)
+{
+	double rad;
+
+	rad = ft_deg_to_rad(deg);
+	return (sin(rad));
 }

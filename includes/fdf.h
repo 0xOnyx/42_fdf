@@ -17,12 +17,13 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <mlx.h>
+# include <math.h>
 # include "libft.h"
 
 # define NAME "FDF"
 # define ANGLE 30
 # define WIDTH 30
-# define HEIGHT 30
+# define HEIGHT 5
 # define SCREEN_WIDTH 900
 # define SCREEN_HEIGHT 600
 
@@ -35,19 +36,21 @@ typedef struct s_data
 	int			endian;
 }	t_data;
 
-typedef struct s_options
-{
-	int			angle;
-	int			width;
-	int			screen_width;
-	int			screen_height;
-}	t_options;
-
 typedef struct s_pos
 {
 	int		x;
 	int		y;
 }	t_pos;
+
+typedef struct s_options
+{
+	int			angle;
+	int			width;
+	int			height;
+	t_pos		offset;
+	int			screen_width;
+	int			screen_height;
+}	t_options;
 
 typedef struct s_vars
 {
@@ -81,5 +84,8 @@ void	ft_draw_background(t_vars *vars);
 void	ft_calc_map(t_vars *vars);
 void	ft_draw_tile(t_vars *vars);
 
+double	ft_deg_to_rad(int deg);
+double	ft_cos(int deg);
+double	ft_sin(int deg);
 
 #endif

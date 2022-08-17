@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug 16 15:36:29 2022
+# Make data base, printed on Wed Aug 17 16:27:10 2022
 
 # Variables
 
@@ -15,13 +15,13 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # automatic
 ?F = $(notdir $?)
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # makefile (from 'Makefile', line 16)
-OPTIONS = -I/usr/include/ -Imlx_linux -I./includes -I./libft -o3 -c 
+OPTIONS = -I/usr/include/ -Imlx_linux -Iincludes -I./libft -o3 -c -g3
 # default
 .SHELLFLAGS := -c
 # makefile (from 'Makefile', line 21)
-SRC = ft_draw_map.c ft_init_map.c ft_init_mlx.c ft_key_press.c ft_parse_file.c ft_render_next_frame.c ft_safe_exit.c ft_safe_file.c ft_valid_arg.c main.c
+SRC = ft_init_map.c ft_init_mlx.c ft_key_press.c ft_parse_file.c ft_render_next_frame.c ft_safe_exit.c ft_safe_file.c ft_valid_arg.c ft_draw_background.c ft_calc_map.c ft_draw_tile.c ft_utils_mlx.c ft_math_utils.c main.c
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
@@ -37,21 +37,21 @@ VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # makefile (from 'Makefile', line 15)
 MLX = mlx
 # environment
-_ = /home/onyx/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/node
+_ = /home/onyx/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/node
 # makefile (from 'Makefile', line 17)
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -g3 -fsanitize=address
 # makefile (from 'Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # 'override' directive
 GNUMAKEFLAGS := 
-# makefile (from 'Makefile', line 33)
+# makefile (from 'Makefile', line 37)
 OBJS = $(SRCS:.c=.o)
 # environment
 VSCODE_CWD = /mnt/c/Users/jeje7/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/onyx/.vscode-server/bin/da76f93349a72022ca4670c1b84860304616aaa2/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Users/jeje7/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jeje7/AppData/Local/Programs/Microsoft VS Code/bin
+PATH = /home/onyx/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Users/jeje7/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/jeje7/AppData/Local/Programs/Microsoft VS Code/bin
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
@@ -61,9 +61,9 @@ SRC_PATH = ./src/
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-cbd0c921-45e6-4b8c-b36f-134ab1173ac8.sock
-# environment
-VSCODE_SERVER_TAR = /mnt/c/Users/jeje7/AppData/Local/Temp/vscode-remote-wsl/da76f93349a72022ca4670c1b84860304616aaa2/vscode-server-stable-linux-x64.tar.gz
+VSCODE_IPC_HOOK_CLI = /mnt/wslg/runtime-dir/vscode-ipc-87d0a74c-5ef0-4b05-a8bb-625936532556.sock
+# makefile (from 'Makefile', line 18)
+LIB = -lm -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -77,7 +77,7 @@ PWD = /mnt/c/Users/jeje7/Documents/42/42_fdf
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/25856_interop
+WSL_INTEROP = /run/WSL/11_interop
 # environment
 PULSE_SERVER = /mnt/wslg/PulseServer
 # environment
@@ -100,7 +100,7 @@ MAKELEVEL := 0
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
-# makefile (from 'Makefile', line 32)
+# makefile (from 'Makefile', line 36)
 SRCS = $(addprefix $(SRC_PATH),$(SRC))
 # environment
 SHLVL = 0
@@ -146,8 +146,6 @@ VSCODE_HANDLES_SIGPIPE = true
 MAKEFILES := 
 # automatic
 <F = $(notdir $<)
-# makefile (from 'Makefile', line 18)
-LIB = -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
 # environment
 PAGER = less
 # environment
@@ -171,7 +169,7 @@ TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu
 # variable set hash-table stats:
-# Load=80/1024=8%, Rehash=0, Collisions=7/121=6%
+# Load=79/1024=8%, Rehash=0, Collisions=6/120=5%
 
 # Pattern-specific Variable Values
 
@@ -179,9 +177,9 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 63, inode 11540474045299466): 14 files, no impossibilities.
+# . (device 63, inode 11540474045299466): 15 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 15 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -191,6 +189,18 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Not a target:
 src/ft_safe_exit.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/ft_draw_tile.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+src/ft_calc_map.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -210,7 +220,7 @@ mlx:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 41):
+#  recipe to execute (from 'Makefile', line 45):
 	make -C ./mlx_linux
 
 # Not a target:
@@ -255,7 +265,7 @@ libft:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 38):
+#  recipe to execute (from 'Makefile', line 42):
 	make -C ./libft
 
 # Not a target:
@@ -267,16 +277,22 @@ libft:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-16 15:33:28.1194314
+ 
+#  Last modified 2022-08-17 15:21:19.4073713
 #  File has been updated.
 #  Successfully updated.
+
+# Not a target:
+src/ft_math_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 src/ft_init_map.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
 
 # Not a target:
 src/ft_parse_file.o:
@@ -288,7 +304,7 @@ src/ft_parse_file.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 44):
+#  recipe to execute (from 'Makefile', line 48):
 	$(CC) $(CFLAGS) $(OPTIONS) $(<) -o $(<:.c=.o)
 
 fclean: clean
@@ -296,20 +312,20 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  recipe to execute (from 'Makefile', line 59):
 	/bin/rm -f $(NAME)
 	/bin/rm -f ./mlx_linux/libmlx_linux.a
 	/bin/rm -f ./mlx_linux/libmlx.a
-	make -C ./mlx_linux fclean
+	make -C ./libft fclean
 
 # Not a target:
-src/ft_safe_file.o:
+src/ft_draw_background.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-src/ft_draw_map.o:
+src/ft_safe_file.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -332,6 +348,12 @@ src/ft_key_press.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+src/ft_utils_mlx.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 re: fclean all
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
@@ -349,35 +371,35 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 50):
+#  recipe to execute (from 'Makefile', line 54):
 	/bin/rm -f $(OBJS)
 	make -C ./libft clean
 	make -C ./mlx_linux clean
 
-fdf: libft mlx src/ft_draw_map.o src/ft_init_map.o src/ft_init_mlx.o src/ft_key_press.o src/ft_parse_file.o src/ft_render_next_frame.o src/ft_safe_exit.o src/ft_safe_file.o src/ft_valid_arg.o src/main.o
+fdf: libft mlx src/ft_init_map.o src/ft_init_mlx.o src/ft_key_press.o src/ft_parse_file.o src/ft_render_next_frame.o src/ft_safe_exit.o src/ft_safe_file.o src/ft_valid_arg.o src/ft_draw_background.o src/ft_calc_map.o src/ft_draw_tile.o src/ft_utils_mlx.o src/ft_math_utils.o src/main.o
 #  Implicit rule search has not been done.
-#  File does not exist.
+#  Last modified 2022-08-17 16:26:03.1382398
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
-#  recipe to execute (from 'Makefile', line 47):
+#  recipe to execute (from 'Makefile', line 51):
 	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
 
 # files hash-table stats:
-# Load=22/1024=2%, Rehash=0, Collisions=0/57=0%
+# Load=26/1024=3%, Rehash=0, Collisions=0/65=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 36 / storage = 382 B / avg = 10 B
-# current buf: size = 8162 B / used = 382 B / count = 36 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 40 / storage = 465 B / avg = 11 B
+# current buf: size = 8162 B / used = 465 B / count = 40 / avg = 11 B
 
-# strcache performance: lookups = 64 / hit rate = 43%
+# strcache performance: lookups = 69 / hit rate = 42%
 # hash-table stats:
-# Load=36/8192=0%, Rehash=0, Collisions=1/64=2%
-# Finished Make data base on Tue Aug 16 15:36:29 2022
+# Load=40/8192=0%, Rehash=0, Collisions=1/69=1%
+# Finished Make data base on Wed Aug 17 16:27:10 2022
 
  

@@ -14,8 +14,8 @@ NAME = fdf
 LIBFT = libft
 MLX = mlx
 OPTIONS = -I/usr/include/ -Imlx_linux -Iincludes -I./libft -o3 -c -g3
-CFLAGS = -Wall -Wextra -Werror
-LIB = -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
+CFLAGS = -g3 -fsanitize=address
+LIB = -lm -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
 CC = gcc
 SRC_PATH = ./src/
 SRC =	ft_init_map.c \
@@ -30,6 +30,7 @@ SRC =	ft_init_map.c \
 		ft_calc_map.c \
 		ft_draw_tile.c \
 		ft_utils_mlx.c \
+		ft_math_utils.c \
 		main.c
 
 SRCS = $(addprefix $(SRC_PATH),$(SRC))

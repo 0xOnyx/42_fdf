@@ -26,8 +26,11 @@ void	ft_init_vars(t_vars *vars)
 	vars->data.endian = 0;
 	vars->options.angle = ANGLE;
 	vars->options.width = WIDTH;
+	vars->options.height = HEIGHT;
 	vars->options.screen_width = SCREEN_WIDTH;
 	vars->options.screen_height = SCREEN_HEIGHT;
+	vars->options.offset.x = vars->options.screen_height / 2;
+	vars->options.offset.y = 20;
 }
 
 int	main(int argc, char **argv)

@@ -12,8 +12,47 @@
 
 #include "fdf.h"
 
+static int	ft_calc_h(t_vars vars, int x, int y)
+{
+	double	res;
+
+	x *= vars.options.width;
+	y *= vars.options.width;
+	res = (x - y) * ft_cos(vars.options.angle);
+	res += vars.options.offset.x;
+	return ((int)res);
+}
+
+static int	ft_calc_v(t_vars vars, int x, int y, int z)
+{
+	double	res;
+
+	x *= vars.options.width;
+	y *= vars.options.width;
+	z *= vars.options.height;
+	res = (-z + (x + y) * ft_sin(vars.options.angle));
+	res += vars.options.offset.y;
+	return ((int)res);
+}
+
 void	ft_calc_map(t_vars *vars)
 {
-	if (vars)
-		return ;
+	int	y;
+	int x;
+
+	y = 0;
+	x = 0;
+	while (y < vars->height)
+	{
+		x = 0;
+		while (x < vars->width)
+		{
+			vars->map_pos[y][x].x = ft_calc_h(*vars, x, y);
+			vars->map_pos[y][x].y = ft_calc_v(
+					*vars, x, y,
+					vars->map_buff[y][x]);
+			x++;
+		}
+		y++;
+	}
 }

@@ -16,7 +16,9 @@ static void	ft_parse(char **current_parse, t_vars *vars, int current_pos)
 {
 	int	i;
 
-	vars->map_buff[current_pos] = malloc(sizeof(int) * vars->width);
+	vars->map_buff[current_pos] = (int *)malloc(sizeof(int) * vars->width);
+	if (!vars->map_buff)
+		return ;
 	i = 0;
 	while (i < vars->width)
 	{
