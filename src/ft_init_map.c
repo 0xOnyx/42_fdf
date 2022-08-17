@@ -25,21 +25,23 @@ static void	ft_parse(char **current_parse, t_vars *vars, int current_pos)
 
 		else */
 			vars->map_buff[current_pos][i] = ft_atoi(current_parse[i]);
-
+		free(current_parse[i]);
 		i++;
 	}
 }
 
 int	ft_init_map(char *file, t_vars *vars)
 {
-	int	fd;
-	int	current_pos;
+	int		fd;
+	int		current_pos;
 	char	*current_line;
 	char	**current_parse;
+	char	*buff_gnl;
 
 	current_pos = 0;
+	buff_gnl = NULL;
 	fd = open(file, O_RDONLY);
-	current_line = get_next_line(fd);
+	current_line = get_next_line(fd, &buff_gnl);
 	vars->map_buff = (int **)malloc(sizeof(int *) * vars->height);
 	while (current_line)
 	{
@@ -47,11 +49,10 @@ int	ft_init_map(char *file, t_vars *vars)
 		ft_parse(current_parse, vars, current_pos);
 		free(current_parse);
 		free(current_line);
-		current_line = get_next_line(fd);
+		current_line = get_next_line(fd, &buff_gnl);
 		current_pos++;
 	}
+	free(buff_gnl);
 	close(fd);
-	if (!vars->height || !vars->width)
-		return (0);
 	return (1);
 }

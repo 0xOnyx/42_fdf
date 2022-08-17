@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_file.c                                     :+:      :+:    :+:   */
+/*   ft_draw_tile.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jerdos-s <jerdos-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 20:33:15 by jerdos-s          #+#    #+#             */
-/*   Updated: 2022/08/15 20:44:32 by jerdos-s         ###   ########.fr       */
+/*   Created: 2022/08/16 22:12:08 by jerdos-s          #+#    #+#             */
+/*   Updated: 2022/08/16 22:12:09 by jerdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_safe_file(char *file)
+void	ft_draw_tile(t_vars *vars)
 {
-	int		fd;
-	char	c;
+	int x;
+	int y;
+	int	color;
 
-	fd = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0 || read(fd, &c, 1) < 0)
+	y = 50;
+	x = 50;
+	color = ft_create_trgb(0, 102, 17, 59);
+	ft_mlx_put_pixel(&vars->data, 0, 0, color);
+	while (y < vars->options.screen_height)
 	{
-		perror("[ERROR]");
-		if (fd > 0)
-			close(fd);
-		return (0);
+		ft_mlx_put_pixel(&vars->data, x, y, color);
+		y++;
 	}
-	close(fd);
-	return (1);
 }

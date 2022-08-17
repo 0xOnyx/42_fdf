@@ -17,8 +17,8 @@ void	ft_init_vars(t_vars *vars)
 	vars->mlx = NULL;
 	vars->mlx_win = NULL;
 	vars->map_buff = NULL;
-	vars->width = 0;
 	vars->height = 0;
+	vars->width = 0;
 	vars->data.img = NULL;
 	vars->data.addr = NULL;
 	vars->data.bits_per_pixel = 0;
@@ -35,18 +35,18 @@ int	main(int argc, char **argv)
 	t_vars	vars;
 
 	ft_init_vars(&vars);
-	if (!ft_valid_arg(argc, argv) 
-	|| !ft_safe_file(argv[1])
-//	|| !ft_parse_file(argv[1], &vars)
-//	|| !ft_init_map(argv[1], &vars)
-//	|| !ft_init_mlx(&vars)
+	if (!ft_valid_arg(argc, argv)
+		|| !ft_safe_file(argv[1])
+		|| !ft_parse_file(argv[1], &vars)
+		|| !ft_init_map(argv[1], &vars)
+		|| !ft_init_mlx(&vars)
 	)
 	{
 		ft_safe_exit(vars);
 		return (1);
 	}
-//	mlx_hook(vars.mlx_win, 2, 1L<<0, ft_key_press, (void *)&vars);
-//	mlx_loop_hook(vars.mlx, ft_render_next_frame, (void *)&vars);
-//	mlx_loop(vars.mlx);
+	mlx_loop_hook(vars.mlx, ft_render_next_frame, (void *)&vars);
+	mlx_loop(vars.mlx);
+	ft_safe_exit(vars);
 	return (0);
 }

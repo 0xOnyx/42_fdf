@@ -1,6 +1,6 @@
 NAME = libft.a
 CFLAG = -Wall -Wextra -Werror
-OPTION = -I./ -c
+OPTION = -I./ -c -g
 SRC_PATH = ./
 SRC =	ft_atoi.c \
 	ft_bzero.c \

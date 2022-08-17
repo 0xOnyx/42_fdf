@@ -17,7 +17,7 @@ static void	ft_free_map(int **buff, t_vars vars)
 	int	i;
 
 	i = 0;
-	while(i < vars.height)
+	while (i < vars.height)
 	{
 		free(buff[i]);
 		i++;
@@ -27,10 +27,10 @@ static void	ft_free_map(int **buff, t_vars vars)
 
 void	ft_safe_exit(t_vars vars)
 {
-	if (vars.mlx)
+	if (vars.mlx && vars.mlx_win)
 		mlx_destroy_window(vars.mlx, vars.mlx_win);
+	if (vars.mlx && vars.data.img)
+		mlx_destroy_image(vars.mlx, vars.data.img);
 	if (vars.map_buff)
 		ft_free_map(vars.map_buff, vars);
-	if (vars.data.img)
-		free(vars.data.img);
 }

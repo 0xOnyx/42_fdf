@@ -27,3 +27,6 @@ v = x*sin(α) + y*sin(α+120°) + z*sin(α-120°)
 destination.y = -source.y * sin(angle) - source.z * sin(angle)
 
 https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Cercle_trigo_3.svg/660px-Cercle_trigo_3.svg.png
+
+
+https://coolors.co/181d26-1d222b-66113b-9c92a3-c6b9cd

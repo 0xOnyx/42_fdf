@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, char **current_buff);
 int		ft_read_from_buff(char **current_buff, int fd);
 char	*ft_get_line(char *current_buff);
 char	*ft_init_new_buff(char *current_buff);

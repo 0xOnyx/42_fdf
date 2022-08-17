@@ -23,8 +23,8 @@
 # define ANGLE 30
 # define WIDTH 30
 # define HEIGHT 30
-# define SCREEN_WIDTH 1920
-# define SCREEN_HEIGHT 1080
+# define SCREEN_WIDTH 900
+# define SCREEN_HEIGHT 600
 
 typedef struct s_data
 {
@@ -43,11 +43,18 @@ typedef struct s_options
 	int			screen_height;
 }	t_options;
 
+typedef struct s_pos
+{
+	int		x;
+	int		y;
+}	t_pos;
+
 typedef struct s_vars
 {
 	void		*mlx;
 	void		*mlx_win;
 	int			**map_buff;
+	t_pos		**map_pos;
 	int			width;
 	int			height;
 	t_data		data;
@@ -61,6 +68,18 @@ int		ft_init_map(char *file, t_vars *vars);
 int		ft_init_mlx(t_vars *vars);
 void	ft_safe_exit(t_vars vars);
 int		ft_render_next_frame(void *vars);
-int		ft_key_press(int keycode, void *vars);
+int		ft_mouse_press(int button, int x, int y, void *data);
+int		ft_mouse_move(int x, int y, void *data);
+int		ft_mouse_release(int button, int x, int y, void *data);
+int		ft_mouse_exit(void *data);
+int		ft_key_press(int keycode, void *data);
+
+void	ft_mlx_put_pixel(t_data *data, int x, int y, int color);
+int		ft_create_trgb(int t, int r, int g, int b);
+
+void	ft_draw_background(t_vars *vars);
+void	ft_calc_map(t_vars *vars);
+void	ft_draw_tile(t_vars *vars);
+
 
 #endif

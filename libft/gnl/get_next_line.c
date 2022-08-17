@@ -79,21 +79,17 @@ char	*ft_init_new_buff(char *buff)
 	return (end);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, char **current_buff)
 {
-	static char	*current_buff;
 	char		*current_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!ft_read_from_buff(&current_buff, fd))
-	{
-		free(current_buff);
+	if (!ft_read_from_buff(current_buff, fd))
 		return (NULL);
-	}
-	current_line = ft_get_line(current_buff);
+	current_line = ft_get_line(*current_buff);
 	if (!current_line)
 		return (NULL);
-	current_buff = ft_init_new_buff(current_buff);
+	*current_buff = ft_init_new_buff(*current_buff);
 	return (current_line);
 }

@@ -25,7 +25,7 @@ static size_t	max_len(char const *s, char c)
 	size_t	i;
 	size_t	len;
 
-	i = 1;
+	i = 0;
 	res = 0;
 	len = ft_strlen(s);
 	while (i <= len)

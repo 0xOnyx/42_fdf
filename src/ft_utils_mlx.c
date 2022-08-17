@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_safe_file.c                                     :+:      :+:    :+:   */
+/*   ft_utils_mlx.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jerdos-s <jerdos-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/15 20:33:15 by jerdos-s          #+#    #+#             */
-/*   Updated: 2022/08/15 20:44:32 by jerdos-s         ###   ########.fr       */
+/*   Created: 2022/08/16 21:25:50 by jerdos-s          #+#    #+#             */
+/*   Updated: 2022/08/16 21:25:51 by jerdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	ft_safe_file(char *file)
+void	ft_mlx_put_pixel(t_data *data, int x, int y, int color)
 {
-	int		fd;
-	char	c;
+	char	*dest;
 
-	fd = 0;
-	fd = open(file, O_RDONLY);
-	if (fd < 0 || read(fd, &c, 1) < 0)
-	{
-		perror("[ERROR]");
-		if (fd > 0)
-			close(fd);
-		return (0);
-	}
-	close(fd);
-	return (1);
+	dest = data->addr;
+	dest += y * data->line_length + x * (data->bits_per_pixel / 8);
+	*(unsigned int *)dest = color;
+}
+
+int	ft_create_trgb(int t, int r, int g, int b)
+{
+	return (t << 24 | r << 16 | g << 8 | b);
 }
