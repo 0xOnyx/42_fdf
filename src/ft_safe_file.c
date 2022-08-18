@@ -17,7 +17,6 @@ int	ft_safe_file(char *file)
 	int		fd;
 	char	c;
 
-	fd = 0;
 	fd = open(file, O_RDONLY);
 	if (fd < 0 || read(fd, &c, 1) < 0)
 	{

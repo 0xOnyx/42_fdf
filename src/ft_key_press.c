@@ -56,8 +56,25 @@ int	ft_key_press(int keycode, void *data)
 	t_vars	*vars;
 
 	vars = (t_vars *)data;
-	printf("value => %d\n", keycode);
-	if (vars)
-		return (0);
+	if (keycode == 119)
+		vars->options.offset.y += 10;
+	if (keycode == 115)
+		vars->options.offset.y -= 10;
+	if (keycode == 97)
+		vars->options.offset.x += 10;
+	if (keycode == 100)
+		vars->options.offset.x -= 10;
+	if (keycode == 65451)
+		vars->options.width += 10;
+	if (keycode == 65453)
+		vars->options.width -= 10;
+	if (keycode == 113)
+		vars->options.angle += 10;
+	if (keycode == 101)
+		vars->options.angle -= 10;
+	if (keycode == 49)
+		vars->options.height -= 10;
+	if (keycode == 50)
+		vars->options.height += 10;
 	return (1);
 }

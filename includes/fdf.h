@@ -24,8 +24,8 @@
 # define ANGLE 30
 # define WIDTH 30
 # define HEIGHT 5
-# define SCREEN_WIDTH 900
-# define SCREEN_HEIGHT 600
+# define SCREEN_WIDTH 1050
+# define SCREEN_HEIGHT 650
 
 typedef struct s_data
 {
