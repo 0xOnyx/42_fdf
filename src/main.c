@@ -17,6 +17,7 @@ void	ft_init_vars(t_vars *vars)
 	vars->mlx = NULL;
 	vars->mlx_win = NULL;
 	vars->map_buff = NULL;
+	vars->map_pos = NULL;
 	vars->height = 0;
 	vars->width = 0;
 	vars->data.img = NULL;

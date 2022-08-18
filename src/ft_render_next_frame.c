@@ -23,6 +23,7 @@ static void	ft_free_calc_buff(t_vars *vars)
 		i++;
 	}
 	free(vars->map_pos);
+	vars->map_pos = NULL;
 }
 
 static int	ft_init_calc_buff(t_vars *vars)

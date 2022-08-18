@@ -71,13 +71,12 @@ int		ft_init_map(char *file, t_vars *vars);
 int		ft_init_mlx(t_vars *vars);
 void	ft_safe_exit(t_vars vars);
 int		ft_render_next_frame(void *vars);
-int		ft_mouse_press(int button, int x, int y, void *data);
-int		ft_mouse_move(int x, int y, void *data);
-int		ft_mouse_release(int button, int x, int y, void *data);
 int		ft_mouse_exit(void *data);
 int		ft_key_press(int keycode, void *data);
 
 void	ft_mlx_put_pixel(t_data *data, int x, int y, int color);
+void	ft_mlx_put_pixel_with_pos(t_data *data,
+			t_pos current, t_pos start, t_pos end);
 int		ft_create_trgb(int t, int r, int g, int b);
 
 void	ft_draw_background(t_vars *vars);

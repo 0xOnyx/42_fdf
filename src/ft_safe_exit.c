@@ -31,6 +31,11 @@ void	ft_safe_exit(t_vars vars)
 		mlx_destroy_window(vars.mlx, vars.mlx_win);
 	if (vars.mlx && vars.data.img)
 		mlx_destroy_image(vars.mlx, vars.data.img);
+	if (vars.mlx)
+		free(vars.mlx);
 	if (vars.map_buff)
 		ft_free_map(vars.map_buff, vars);
+	if (vars.map_pos)
+		ft_free_map(vars.map_buff, vars);
+	exit(0);
 }

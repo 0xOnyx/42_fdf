@@ -14,7 +14,7 @@ NAME = fdf
 LIBFT = libft
 MLX = mlx
 OPTIONS = -I/usr/include/ -Imlx_linux -Iincludes -I./libft -o3 -c -g3
-CFLAGS = -g3 -fsanitize=address
+CFLAGS = -g3
 LIB = -lm -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
 CC = gcc
 SRC_PATH = ./src/
