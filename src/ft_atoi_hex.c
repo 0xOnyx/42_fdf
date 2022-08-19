@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math_utils.c                                    :+:      :+:    :+:   */
+/*   ft_atoi_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jerdos-s <jerdos-s@student.42lausanne.ch>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/17 11:46:08 by jerdos-s          #+#    #+#             */
-/*   Updated: 2022/08/17 11:46:09 by jerdos-s         ###   ########.fr       */
+/*   Created: 2022/08/19 14:57:22 by jerdos-s          #+#    #+#             */
+/*   Updated: 2022/08/19 14:57:23 by jerdos-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-double	ft_deg_to_rad(int deg)
+int	ft_atoi_hex(char *str)
 {
-	return (deg * (M_PI / 180));
-}
+	int	res;
 
-double	ft_cos(int deg)
-{
-	double	rad;
-
-	rad = ft_deg_to_rad(deg);
-	return (cos(rad));
-}
-
-double	ft_sin(int deg)
-{
-	double	rad;
-
-	rad = ft_deg_to_rad(deg);
-	return (sin(rad));
+	res = 0;
+	str += 2;
+	while (*str != '\0')
+	{
+		if (*str >= '0' && *str <= '9')
+			res = res * 16 + *str - '0';
+		else if (*str >= 'a' && *str <= 'f')
+			res = res * 16 + *str - 'a' + 10;
+		else if (*str >= 'A' && *str <= 'F')
+			res = res * 16 + *str - 'A' + 10;
+		else
+			break ;
+		str++;
+	}
+	return (res);
 }

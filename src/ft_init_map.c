@@ -22,10 +22,9 @@ static void	ft_parse(char **current_parse, t_vars *vars, int current_pos)
 	i = 0;
 	while (i < vars->width)
 	{
-/*		if (ft_strlen(current_parse[i]) >= 2 && current_parse[i][1] == 'x')
+		if (ft_strlen(current_parse[i]) >= 2 && current_parse[i][1] == 'x')
 			vars->map_buff[current_pos][i] = ft_atoi_hex(current_parse[i]);
-
-		else */
+		else
 			vars->map_buff[current_pos][i] = ft_atoi(current_parse[i]);
 		free(current_parse[i]);
 		i++;

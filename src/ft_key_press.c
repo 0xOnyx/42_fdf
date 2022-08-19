@@ -40,7 +40,7 @@ int	ft_key_press(int keycode, void *data)
 		((t_vars *)data)->options.height -= 10;
 	if (keycode == 50)
 		((t_vars *)data)->options.height += 10;
-	//if (keycode == 65307)
-	//	ft_safe_exit(*(t_vars *)data);
+	if (keycode == 65307)
+		ft_safe_exit(*(t_vars *)data);
 	return (1);
 }

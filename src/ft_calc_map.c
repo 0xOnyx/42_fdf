@@ -38,7 +38,7 @@ static int	ft_calc_v(t_vars vars, int x, int y, int z)
 void	ft_calc_map(t_vars *vars)
 {
 	int	y;
-	int x;
+	int	x;
 
 	y = 0;
 	x = 0;

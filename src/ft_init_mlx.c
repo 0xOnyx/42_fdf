@@ -19,7 +19,7 @@ int	ft_init_mlx(t_vars *vars)
 			vars->mlx,
 			vars->options.screen_width,
 			vars->options.screen_height,
-			NAME); 
+			NAME);
 	vars->data.img = mlx_new_image(
 			vars->mlx,
 			vars->options.screen_width,

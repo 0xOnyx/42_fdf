@@ -65,6 +65,17 @@ typedef struct s_vars
 	t_options	options;
 }	t_vars;
 
+typedef struct s_draw_line
+{
+	t_pos	d;
+	t_pos	s;
+	int		error[2];
+	t_pos	start;
+	t_vars	*vars;
+	t_pos	pos1;
+	t_pos	pos2;
+}	t_draw_line;
+
 int		ft_valid_arg(int argc, char **argv);
 int		ft_safe_file(char *file);
 int		ft_parse_file(char *file, t_vars *vars);
@@ -88,5 +99,6 @@ void	ft_draw_tile(t_vars *vars);
 double	ft_deg_to_rad(int deg);
 double	ft_cos(int deg);
 double	ft_sin(int deg);
+int		ft_atoi_hex(char *str);
 
 #endif
