@@ -40,6 +40,7 @@ typedef struct s_pos
 {
 	int		x;
 	int		y;
+	int		color;
 }	t_pos;
 
 typedef struct s_options
@@ -79,6 +80,7 @@ void	ft_mlx_put_pixel_with_pos(t_data *data,
 			t_pos current, t_pos start, t_pos end);
 int		ft_create_trgb(int t, int r, int g, int b);
 
+void	ft_draw_menu(t_vars *vars);
 void	ft_draw_background(t_vars *vars);
 void	ft_calc_map(t_vars *vars);
 void	ft_draw_tile(t_vars *vars);

@@ -26,7 +26,7 @@ static int	ft_abs(int nbr)
 	return (nbr);
 }
 
-static void	ft_draw_line(t_vars *vars, t_pos pos1, t_pos pos2, int z)
+static void	ft_draw_line(t_vars *vars, t_pos pos1, t_pos pos2)
 {
 	int	dx;
 	int	sx;
@@ -45,7 +45,7 @@ static void	ft_draw_line(t_vars *vars, t_pos pos1, t_pos pos2, int z)
 		&& pos1.y < vars->options.screen_height)
 	{
 		if (pos1.x >= 0 && pos1.y >= 0)
-			ft_mlx_put_pixel_with_pos(&vars->data, pos1, start, pos2, z);
+			ft_mlx_put_pixel_with_pos(&vars->data, pos1, start, pos2);
 		if (pos1.x == pos2.x && pos1.y == pos2.y)
 			break ;
 		error[1] = 2 * error[0];
@@ -70,6 +70,7 @@ void	ft_draw_tile(t_vars *vars)
 {
 	int	x;
 	int	y;
+	int	z;
 
 	x = 0;
 	y = 0;
@@ -78,12 +79,13 @@ void	ft_draw_tile(t_vars *vars)
 		x = 0;
 		while (x < vars->width)
 		{
+			z = vars->map_buff[y][x];
 			if (x + 1 < vars->width)
 				ft_draw_line(vars, vars->map_pos[y][x],
-					vars->map_pos[y][x + 1], vars->map_buff[y][x]);
+					vars->map_pos[y][x + 1]);
 			if (y + 1 < vars->height)
 				ft_draw_line(vars, vars->map_pos[y][x],
-					vars->map_pos[y + 1][x], vars->map_buff[y][x]);
+					vars->map_pos[y + 1][x]);
 			x++;
 		}
 		y++;

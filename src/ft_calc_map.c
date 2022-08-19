@@ -51,6 +51,10 @@ void	ft_calc_map(t_vars *vars)
 			vars->map_pos[y][x].y = ft_calc_v(
 					*vars, x, y,
 					vars->map_buff[y][x]);
+			if (vars->map_buff[y][x] > 0)
+				vars->map_pos[y][x].color = ft_create_trgb(0, 198, 185, 205);
+			else
+				vars->map_pos[y][x].color = ft_create_trgb(0, 102, 17, 59);
 			x++;
 		}
 		y++;

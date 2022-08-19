@@ -31,6 +31,7 @@ SRC =	ft_init_map.c \
 		ft_draw_tile.c \
 		ft_utils_mlx.c \
 		ft_math_utils.c \
+		ft_draw_menu.c \
 		main.c
 
 SRCS = $(addprefix $(SRC_PATH),$(SRC))

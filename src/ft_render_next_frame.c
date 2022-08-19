@@ -49,10 +49,10 @@ int	ft_render_next_frame(void *data)
 	vars = (t_vars *)data;
 	if (!ft_init_calc_buff(vars))
 		return (0);
-	//ft_draw_menu();
 	ft_draw_background(vars);
 	ft_calc_map(vars);
 	ft_draw_tile(vars);
+	ft_draw_menu(vars);
 	mlx_put_image_to_window(
 		vars->mlx,
 		vars->mlx_win,
