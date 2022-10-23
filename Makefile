@@ -13,11 +13,28 @@
 NAME = fdf
 LIBFT = libft
 MLX = mlx
-OPTIONS = -I/usr/include/ -Imlx_linux -Iincludes -I./libft -o3 -c -g3
 CFLAGS = -Wall -Werror -Wextra
-LIB = -lm -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -L./libft -lft
+SRCS_OBJS = objs/
+SRC_PATH = src/
+SRC_INCLUDE = includes/
+
+UNAME = $(shell uname -s)
+
+ifeq ($(UNAME),Linux)
+	LIB = -lm -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
+	SRC_MLX = ./mlx_linux
+	OPTIONS = -Imlx_linux
+endif
+ifeq ($(UNAME),Darwin)
+	LIB = -Lmlx_macos -lmlx -framework OpenGL -framework AppKit
+	SRC_MLX = ./mlx_macos
+	OPTIONS = -Imlx_macos
+endif
+
+OPTIONS += -I/usr/include/ -Iincludes -I./libft -o3 -c -g3
+LIB += -L./libft -lft
 CC = gcc
-SRC_PATH = ./src/
+
 SRC =	ft_init_map.c \
 		ft_init_mlx.c \
 		ft_key_press.c \
@@ -34,34 +51,36 @@ SRC =	ft_init_map.c \
 		ft_draw_menu.c \
 		ft_atoi_hex.c \
 		main.c
+HEADER = fdf.h
 
 SRCS = $(addprefix $(SRC_PATH),$(SRC))
-OBJS = $(SRCS:.c=.o)
+OBJ = $(SRC:.c=.o)
+OBJS = $(addprefix $(SRCS_OBJS),$(OBJ))
+HEADERS = $(addprefix $(SRC_INCLUDE),$(HEADER))
 
 all:$(NAME)
 
 $(LIBFT):
-	make -C ./libft
+	make -C $(LIBFT)
 
 $(MLX):
-	make -C ./mlx_linux
+	make -C ${SRC_MLX}
+	cp ${SRC_MLX}/libmlx.dylib ./
 
-.c.o:
-	$(CC) $(CFLAGS) $(OPTIONS) $(<) -o $(<:.c=.o)
+$(SRCS_OBJS)%.o: $(SRC_PATH)%.c $(HEADERS)
+	$(CC) $(CFLAGS) $(OPTIONS) $(<) -o $(@)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIB) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIB) $(OBJS) -o $(NAME)
 
 clean:
 	/bin/rm -f $(OBJS)
-	make -C ./libft clean
-	make -C ./mlx_linux clean
+	make -C $(LIBFT) clean
+	make -C $(SRC_MLX) clean
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	/bin/rm -f ./mlx_linux/libmlx_linux.a
-	/bin/rm -f ./mlx_linux/libmlx.a
-	make -C ./libft fclean
+	make -C $(SRC_MLX) fclean
 
 re:	fclean all
 

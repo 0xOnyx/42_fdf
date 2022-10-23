@@ -36,8 +36,6 @@ static void	ft_print_text(t_vars *vars)
 	int		color_text;
 
 	color_text = ft_create_trgb(0, 255, 255, 255);
-	mlx_set_font(vars->mlx, vars->mlx_win,
-		"-schumacher-clean-medium-r-normal--15-150-75-75-c-90-iso646.1991-irv");
 	mlx_string_put(vars->mlx, vars->mlx_win,
 		vars->options.screen_width - 260, 60, color_text, "USAGE");
 	mlx_string_put(vars->mlx, vars->mlx_win,
