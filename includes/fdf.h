@@ -95,6 +95,7 @@ void	ft_draw_menu(t_vars *vars);
 void	ft_draw_background(t_vars *vars);
 void	ft_calc_map(t_vars *vars);
 void	ft_draw_tile(t_vars *vars);
+void	ft_print_text(t_vars *vars);
 
 double	ft_deg_to_rad(int deg);
 double	ft_cos(int deg);

@@ -31,7 +31,7 @@ static void	ft_create_rect(t_vars *vars, t_pos offset, t_pos width, int color)
 	}
 }
 
-static void	ft_print_text(t_vars *vars)
+void	ft_print_text(t_vars *vars)
 {
 	int		color_text;
 
@@ -68,5 +68,4 @@ void	ft_draw_menu(t_vars *vars)
 	width.x = 270;
 	width.y = 240;
 	ft_create_rect(vars, offset, width, color_base);
-	ft_print_text(vars);
 }

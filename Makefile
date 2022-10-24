@@ -13,7 +13,7 @@
 NAME = fdf
 LIBFT = libft
 MLX = mlx
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS =
 SRCS_OBJS = objs/
 SRC_PATH = src/
 SRC_INCLUDE = includes/
@@ -31,7 +31,7 @@ ifeq ($(UNAME),Darwin)
 	OPTIONS = -Imlx_macos
 endif
 
-OPTIONS += -I/usr/include/ -Iincludes -I./libft -o3 -c -g3
+OPTIONS += -I/usr/include/ -Iincludes -I./libft -o3 -c
 LIB += -L./libft -lft
 CC = gcc
 
@@ -68,10 +68,10 @@ $(MLX):
 	cp ${SRC_MLX}/libmlx.dylib ./
 
 $(SRCS_OBJS)%.o: $(SRC_PATH)%.c $(HEADERS)
-	$(CC) $(CFLAGS) $(OPTIONS) $(<) -o $(@)
+	$(CC) $(CFLAGS) $(OPTIONS) $(<) -o $(@) -g3 -fsanitize=address
 
 $(NAME): $(LIBFT) $(MLX) $(OBJS)
-	$(CC) $(CFLAGS) $(LIB) $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(LIB) $(OBJS) -o $(NAME) -g3 -fsanitize=address
 
 clean:
 	/bin/rm -f $(OBJS)
@@ -80,7 +80,7 @@ clean:
 
 fclean: clean
 	/bin/rm -f $(NAME)
-	make -C $(SRC_MLX) fclean
+	make -C $(LIBFT) fclean
 
 re:	fclean all
 
